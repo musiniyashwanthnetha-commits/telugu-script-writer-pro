@@ -1,31 +1,310 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="google-site-verification" content="6nZjkgo56s9T6o04k0CSa1qVCxhG3HIcg7BDe9kgxVI" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>TSW PRO - Telugu Script Writer Pro</title>
+<title>TSW PRO - Telugu Script Writer Pro</title>
 
-    <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Telugu:wght@400;700&display=swap" rel="stylesheet">
+
 </head>
 <body>
 
-    <header>
-        <h1>🎬 TSW PRO</h1>
-        <p>Telugu Movie Script Writer Pro</p>
-    </header>
+<!-- HEADER -->
 
-    <main>
-        <textarea id="scriptArea" placeholder="Mee Telugu Cinema Script Ikada Rayandi..."></textarea>
+<div class="app-header">
 
-        <br><br>
+    <div class="logo">
+        🎬 TSW PRO
+    </div>
 
-        <button onclick="saveScript()">Save Script</button>
-        <button onclick="clearScript()">Clear</button>
-    </main>
+    <div class="tagline">
+        Write. Visualize. Create.
+    </div>
 
-    <script src="script.js"></script>
+</div>
+
+<div class="container">
+
+    <!-- LEFT PANEL -->
+
+    <div class="form-panel">
+
+        <h2>PROJECT DETAILS</h2>
+
+        <input type="text" id="title" placeholder="TITLE">
+
+        <input type="text" id="writtenby" placeholder="WRITTEN BY">
+
+        <input type="text" id="author" placeholder="AUTHOR">
+
+        <input type="text" id="phone" placeholder="PHONE">
+
+        <input type="email" id="email" placeholder="EMAIL">
+
+        <hr>
+
+        <h2>SCENE DETAILS</h2>
+
+        <input type="text" id="fadein" placeholder="FADE IN">
+
+        <input type="number" id="sequence" placeholder="SEQUENCE NO">
+
+        <input type="number" id="sceneno" placeholder="SCENE NO">
+
+        <select id="intext">
+            <option>INT.</option>
+            <option>EXT.</option>
+        </select>
+
+        <select id="daynight">
+            <option>DAY</option>
+            <option>NIGHT</option>
+            <option>EVENING</option>
+            <option>MORNING</option>
+        </select>
+
+        <input type="text" id="location" placeholder="LOCATION">
+
+        <input type="text" id="characters" placeholder="CHARACTERS">
+
+        <input type="text" id="emotion" placeholder="EMOTION">
+
+        <textarea id="action" placeholder="ACTION DESCRIPTION"></textarea>
+
+        <input type="text" id="camera" placeholder="CAMERA">
+
+        <!-- SHOT TYPE -->
+
+        <select id="shottype">
+
+            <option value="">SELECT SHOT TYPE</option>
+
+            <option>WIDE SHOT</option>
+            <option>MEDIUM SHOT</option>
+            <option>CLOSE UP</option>
+            <option>EXTREME CLOSE UP</option>
+            <option>DRONE SHOT</option>
+            <option>TOP ANGLE</option>
+            <option>LOW ANGLE</option>
+            <option>OVER SHOULDER</option>
+            <option>POV SHOT</option>
+            <option>TRACKING SHOT</option>
+            <option>DOLLY SHOT</option>
+            <option>CRANE SHOT</option>
+            <option>ESTABLISHING SHOT</option>
+
+        </select>
+
+        <!-- MOVEMENT -->
+
+        <select id="movement">
+
+            <option value="">SELECT MOVEMENT</option>
+
+            <option>PAN LEFT</option>
+            <option>PAN RIGHT</option>
+            <option>TILT UP</option>
+            <option>TILT DOWN</option>
+            <option>PUSH IN</option>
+            <option>PULL OUT</option>
+            <option>TRACK IN</option>
+            <option>TRACK OUT</option>
+            <option>HANDHELD</option>
+            <option>STEADICAM</option>
+            <option>CRANE UP</option>
+            <option>CRANE DOWN</option>
+            <option>ZOOM IN</option>
+            <option>ZOOM OUT</option>
+            <option>STATIC</option>
+
+        </select>
+
+        <input type="text" id="sfx" placeholder="SFX">
+
+        <input type="text" id="bgm" placeholder="BGM">
+
+        <input type="text" id="dialogueCharacter" placeholder="DIALOGUE CHARACTER">
+
+        <textarea id="dialogue" placeholder="DIALOGUE"></textarea>
+
+        <input type="text" id="transition" placeholder="TRANSITION">
+
+        <input type="text" id="nextscene" placeholder="NEXT SCENE">
+
+        <input type="text" id="fadeout" placeholder="FADE OUT">
+
+        <hr>
+
+        <button onclick="generateScript()">ADD TO SCRIPT</button>
+
+        <button onclick="newScene()">ADD NEW SCENE</button>
+
+        <button onclick="saveProject()">SAVE PROJECT</button>
+
+        <button onclick="downloadPDF()">DOWNLOAD PDF</button>
+
+        <button onclick="printScript()">PRINT SCRIPT</button>
+
+        <button onclick="resetScript()">RESET SCRIPT</button>
+
+        <input type="file" id="projectFile">
+
+        <button onclick="openProject()">OPEN PROJECT</button>
+
+    </div>
+
+    <!-- RIGHT PANEL -->
+
+    <div class="preview-panel">
+
+        <!-- STATISTICS -->
+
+        <div class="stats-panel">
+
+            <h2>PROJECT STATISTICS</h2>
+
+            <p>PROJECT : <span id="projectStat">UNTITLED</span></p>
+
+            <p>TOTAL SCENES : <span id="sceneCount">0</span></p>
+
+            <p>TOTAL CHARACTERS : <span id="characterCount">0</span></p>
+
+            <p>TOTAL DIALOGUES : <span id="dialogueCount">0</span></p>
+
+            <p>TOTAL PAGES : <span id="pageCount">1</span></p>
+
+            <p>WORD COUNT : <span id="wordCount">0</span></p>
+
+        </div>
+
+        <!-- CHARACTER REPORT -->
+
+        <div class="character-report">
+
+            <h2>CHARACTER REPORT</h2>
+
+            <div id="characterReportList">
+
+                No Characters Yet
+
+            </div>
+
+        </div>
+
+        <!-- SHOT LIST -->
+
+        <div class="shotlist-panel">
+
+            <h2>SHOT LIST</h2>
+
+            <pre id="shotListOutput"></pre>
+
+            <button onclick="generateShotList()">
+                GENERATE SHOT LIST
+            </button>
+
+            <button onclick="downloadShotList()">
+                DOWNLOAD SHOT LIST
+            </button>
+
+        </div>
+
+        <!-- SCREENPLAY PAGE -->
+
+        <div id="scriptPage" class="script-page">
+
+            <div id="coverPage" class="cover-page">
+
+                <h1 id="coverTitle">
+                    TITLE
+                </h1>
+
+                <div class="cover-written">
+                    Written By
+                </div>
+
+                <div id="coverAuthor">
+                    AUTHOR
+                </div>
+
+                <div class="cover-contact">
+
+                    <p>
+                        Phone:
+                        <span id="coverPhone"></span>
+                    </p>
+
+                    <p>
+                        Email:
+                        <span id="coverEmail"></span>
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="page-break"></div>
+
+            <div id="scriptContent"></div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="footer">
+    TSW PRO © 2026
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+<script src="script.js"></script>
 
 </body>
-</html>
+</html><div class="app-header">
+
+    <img src="logo.png" class="header-logo" alt="TSW PRO Logo">
+
+    <div class="logo">
+        TSW PRO
+    </div>
+
+    <div class="tagline">
+        Write. Visualize. Create.
+    </div>
+
+</div><h2>AI Scene Generator</h2>
+
+<input type="text" id="aiLocation" placeholder="Location">
+
+<input type="text" id="aiCharacters" placeholder="Characters">
+
+<input type="text" id="aiEmotion" placeholder="Emotion">
+
+<button onclick="generateAIScene()">
+GENERATE SCENE
+</button><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="google-site-verification" content="6nZjkgo56s9T6o04k0CSa1qVCxhG3HIcg7BDe9kgxVI" />
+
+<title>TSW PRO - Telugu Script Writer Pro</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="google-site-verification" content="6nZjkgo56s9T6o04k0CSa1qVCxhG3HIcg7BDe9kgxVI" />
+
+<title>TSW PRO - Telugu Script Writer Pro</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
