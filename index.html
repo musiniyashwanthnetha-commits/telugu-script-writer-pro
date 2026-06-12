@@ -2,121 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <meta name="google-site-verification" content="6nZjkgo56s9T6o04k0CSa1qVCxhG3HIcg7BDe9kgxVI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>TSW PRO - Telugu Script Writer Pro</title>
 
-    <style>
-        *{
-            margin:0;
-            padding:0;
-            box-sizing:border-box;
-            font-family:Arial, sans-serif;
-        }
-
-        body{
-            background:#111;
-            color:white;
-            min-height:100vh;
-            display:flex;
-            justify-content:center;
-            align-items:center;
-        }
-
-        .container{
-            width:90%;
-            max-width:1000px;
-            background:#1b1b1b;
-            padding:30px;
-            border-radius:15px;
-        }
-
-        h1{
-            text-align:center;
-            margin-bottom:20px;
-        }
-
-        textarea{
-            width:100%;
-            height:500px;
-            padding:15px;
-            font-size:16px;
-            border:none;
-            border-radius:10px;
-            resize:vertical;
-        }
-
-        .btn{
-            margin-top:15px;
-            padding:12px 20px;
-            background:#00aaff;
-            color:white;
-            border:none;
-            border-radius:8px;
-            cursor:pointer;
-            font-size:16px;
-        }
-
-        .btn:hover{
-            opacity:0.9;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<div class="container">
+    <header>
+        <h1>🎬 TSW PRO</h1>
+        <p>Telugu Movie Script Writer Pro</p>
+    </header>
 
-    <h1>TSW PRO - Telugu Script Writer Pro</h1>
+    <main>
+        <textarea id="scriptArea" placeholder="Mee Telugu Cinema Script Ikada Rayandi..."></textarea>
 
-    <textarea id="scriptBox">
-SEQUENCE NO:
-SCENE NO:
+        <br><br>
 
-INT / EXT :
-DAY / NIGHT :
-TIME :
-LOCATION :
+        <button onclick="saveScript()">Save Script</button>
+        <button onclick="clearScript()">Clear</button>
+    </main>
 
-CHARACTERS :
-EMOTION / MOOD :
-
-SCENE HEADING :
-ACTION DESCRIPTION :
-
-DIALOGUE :
-
-CAMERA (Optional) :
-SHOT TYPE :
-MOVEMENT :
-
-SFX :
-BGM :
-
-TRANSITION :
-
-NEXT SCENE :
-    </textarea>
-
-    <button class="btn" onclick="saveScript()">Save Script</button>
-
-</div>
-
-<script>
-function saveScript() {
-    const text = document.getElementById("scriptBox").value;
-
-    const blob = new Blob([text], {type:"text/plain"});
-    const a = document.createElement("a");
-
-    a.href = URL.createObjectURL(blob);
-    a.download = "Telugu_Movie_Script.txt";
-
-    a.click();
-}
-</script>
+    <script src="script.js"></script>
 
 </body>
 </html>
