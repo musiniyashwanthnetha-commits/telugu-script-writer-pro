@@ -1,115 +1,107 @@
+/* =========================
+   TSW PRO - Telugu Script Writer Pro
+   ========================= */
+
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial, sans-serif;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
 body{
-background:#0f0f0f;
-color:#ffffff;
-line-height:1.6;
+    font-family: Arial, sans-serif;
+    background:#111;
+    color:#fff;
+    min-height:100vh;
 }
 
 .container{
-width:95%;
-max-width:1200px;
-margin:auto;
-padding:20px;
+    width:90%;
+    max-width:1200px;
+    margin:auto;
+    padding:20px;
 }
 
-h1{
-text-align:center;
-margin-bottom:20px;
-color:#00c3ff;
+header{
+    text-align:center;
+    padding:30px 0;
 }
 
-h2{
-margin:20px 0 10px;
-color:#00c3ff;
+header h1{
+    font-size:40px;
+    color:#ffd700;
+    margin-bottom:10px;
+}
+
+header p{
+    font-size:18px;
+    color:#ccc;
+}
+
+.form-box{
+    background:#1c1c1c;
+    padding:25px;
+    border-radius:12px;
+    margin-top:20px;
+    box-shadow:0 0 15px rgba(255,255,255,0.1);
+}
+
+label{
+    display:block;
+    margin-top:15px;
+    margin-bottom:5px;
+    font-weight:bold;
 }
 
 input,
 select,
 textarea{
-width:100%;
-padding:12px;
-margin-bottom:12px;
-border:none;
-border-radius:8px;
-background:#1f1f1f;
-color:white;
-font-size:15px;
-}
-
-input:focus,
-select:focus,
-textarea:focus{
-outline:none;
-box-shadow:0 0 8px #00c3ff;
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:8px;
+    background:#2b2b2b;
+    color:#fff;
+    font-size:16px;
 }
 
 textarea{
-min-height:120px;
-resize:vertical;
+    resize:vertical;
+    min-height:100px;
 }
 
 button{
-background:#00aaff;
-color:white;
-border:none;
-padding:12px 20px;
-border-radius:8px;
-cursor:pointer;
-margin:5px;
-font-size:15px;
-font-weight:bold;
+    margin-top:20px;
+    padding:12px 25px;
+    border:none;
+    border-radius:8px;
+    background:#ffd700;
+    color:#000;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
 }
 
-button:hover
-
-#output{
-margin-top:20px;
-background:white;
-color:black;
-padding:20px;
-border-radius:10px;
-min-height:300px;
-white-space:pre-wrap;
-box-shadow:0 0 10px rgba(0,0,0,0.4);
+button:hover{
+    opacity:0.9;
 }
 
-hr{
-border:none;
-height:1px;
-background:#333;
-margin:20px 0;
-}
-
-.footer{
-text-align:center;
-padding:20px;
-margin-top:30px;
-background:#000;
-color:#ccc;
+footer{
+    text-align:center;
+    padding:20px;
+    margin-top:30px;
+    color:#aaa;
+    font-size:14px;
 }
 
 @media(max-width:768px){
 
-```
-.container{
-    width:100%;
-    padding:10px;
-}
+    header h1{
+        font-size:28px;
+    }
 
-h1{
-    font-size:24px;
-}
-
-button{
-    width:100%;
-    margin-bottom:10px;
-}
-```
+    .form-box{
+        padding:15px;
+    }
 
 }
