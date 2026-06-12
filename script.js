@@ -1,404 +1,151 @@
-let autoSceneNumber = 1;
-let characterStats = {};
-let shotListData = [];
+function generateScript(){
 
-// ADD TO SCRIPT
+let script =
 
-function generateScript() {
+`TITLE :
+${document.getElementById("title").value}
 
-    const title = document.getElementById("title").value;
-    const author = document.getElementById("author").value;
-    const phone = document.getElementById("phone").value;
-    const email = document.getElementById("email").value;
+WRITTEN BY :
+${document.getElementById("writtenby").value}
 
-    document.getElementById("coverTitle").textContent =
-    title || "UNTITLED";
+AUTHOR :
+${document.getElementById("author").value}
 
-    document.getElementById("coverAuthor").textContent =
-    author || "AUTHOR";
+PHONE :
+${document.getElementById("phone").value}
 
-    document.getElementById("coverPhone").textContent =
-    phone || "";
+EMAIL :
+${document.getElementById("email").value}
 
-    document.getElementById("coverEmail").textContent =
-    email || "";
+---
 
-    const sequence =
-    document.getElementById("sequence").value;
+FADE IN:
+${document.getElementById("fadein").value}
 
-    const sceneNo =
-    document.getElementById("sceneno").value ||
-    autoSceneNumber;
+SEQUENCE NO :
+${document.getElementById("sequence").value}
 
-    const intext =
-    document.getElementById("intext").value;
+SCENE NO :
+${document.getElementById("scene").value}
 
-    const daynight =
-    document.getElementById("daynight").value;
+INT. / EXT. :
+${document.getElementById("intext").value}
 
-    const location =
-    document.getElementById("location").value;
+DAY / NIGHT :
+${document.getElementById("daynight").value}
 
-    const characters =
-    document.getElementById("characters").value;
+TIME :
+${document.getElementById("time").value}
 
-    const emotion =
-    document.getElementById("emotion").value;
+LOCATION :
+${document.getElementById("location").value}
 
-    const action =
-    document.getElementById("action").value;
+CHARACTERS :
+${document.getElementById("characters").value}
 
-    const camera =
-    document.getElementById("camera").value;
+EMOTION / MOOD :
+${document.getElementById("emotion").value}
 
-    const shottype =
-    document.getElementById("shottype").value;
+---
 
-    const movement =
-    document.getElementById("movement").value;
+SCENE HEADING :
+${document.getElementById("sceneheading").value}
 
-    const sfx =
-    document.getElementById("sfx").value;
+ACTION DESCRIPTION :
+${document.getElementById("action").value}
 
-    const bgm =
-    document.getElementById("bgm").value;
+---
 
-    const dialogueCharacter =
-    document.getElementById("dialogueCharacter").value;
+CHARACTER NAME :
+${document.getElementById("charactername").value}
 
-    const dialogue =
-    document.getElementById("dialogue").value;
+DIALOGUE :
+${document.getElementById("dialogue").value}
 
-    const transition =
-    document.getElementById("transition").value;
+---
 
-    const nextscene =
-    document.getElementById("nextscene").value;
+CAMERA :
+${document.getElementById("camera").value}
 
-    const sceneId = "scene_" + sceneNo;
+SHOT TYPE :
+${document.getElementById("shottype").value}
 
-    // Character Stats
+MOVEMENT :
+${document.getElementById("movement").value}
 
-    if(dialogueCharacter){
+---
 
-        if(!characterStats[dialogueCharacter]){
-            characterStats[dialogueCharacter] = 0;
-        }
+SFX :
+${document.getElementById("sfx").value}
 
-        characterStats[dialogueCharacter]++;
-    }
+BGM :
+${document.getElementById("bgm").value}
 
-    // Shot List
+---
 
-    shotListData.push({
-        scene: sceneNo,
-        heading: `${intext} ${location} - ${daynight}`,
-        shot: shottype,
-        movement: movement
-    });
+TRANSITION :
+${document.getElementById("transition").value}
 
-    // Screenplay
+CUT TO :
+${document.getElementById("cutto").value}
 
-    document.getElementById("scriptContent").innerHTML += `
+DISSOLVE TO :
+${document.getElementById("dissolve").value}
 
-    <div id="${sceneId}" class="scene-block">
+FADE OUT :
+${document.getElementById("fadeout").value}
 
-        <div class="sequence">
-        SEQUENCE NO : ${sequence}
-        </div>
+---
 
-        <div class="scene-heading">
-            <span>${sceneNo}</span>
-            <span>${intext} ${location} - ${daynight}</span>
-            <span>${sceneNo}</span>
-        </div>
-
-        <div class="action">
-${action}
-        </div>
-
-        <div>
-            <strong>CHARACTERS:</strong>
-            ${characters}
-        </div>
-
-        <div>
-            <strong>EMOTION:</strong>
-            ${emotion}
-        </div>
-
-        <br>
-
-        <div>
-            <strong>CAMERA:</strong>
-            ${camera}
-        </div>
-
-        <div>
-            <strong>SHOT TYPE:</strong>
-            ${shottype}
-        </div>
-
-        <div>
-            <strong>MOVEMENT:</strong>
-            ${movement}
-        </div>
-
-        <div>
-            <strong>SFX:</strong>
-            ${sfx}
-        </div>
-
-        <div>
-            <strong>BGM:</strong>
-            ${bgm}
-        </div>
-
-        <div class="character-name">
-            ${dialogueCharacter}
-        </div>
-
-        <div class="dialogue-block">
-            ${dialogue}
-        </div>
-
-        <div class="transition">
-            ${transition}
-        </div>
-
-        <div class="nextscene">
-            ${nextscene}
-        </div>
-
-        <hr>
-
-    </div>
-    `;
-
-    // Scene Navigator
-
-    const sceneList =
-    document.getElementById("sceneList");
-
-    if(sceneList){
-
-        sceneList.innerHTML += `
-        <li onclick="document.getElementById('${sceneId}').scrollIntoView()">
-        Scene ${sceneNo}
-        </li>
-        `;
-    }
-
-    updateStatistics();
-    updateCharacterReport();
-
-    autoSceneNumber++;
-}
-
-// NEW SCENE
-
-function newScene(){
-
-    document.getElementById("location").value = "";
-    document.getElementById("characters").value = "";
-    document.getElementById("emotion").value = "";
-    document.getElementById("action").value = "";
-    document.getElementById("camera").value = "";
-    document.getElementById("dialogueCharacter").value = "";
-    document.getElementById("dialogue").value = "";
-}
-
-// STATISTICS
-
-function updateStatistics(){
-
-    const content =
-    document.getElementById("scriptContent").innerText;
-
-    const words =
-    content.trim().split(/\s+/).filter(Boolean).length;
-
-    const scenes =
-    document.querySelectorAll(".scene-block").length;
-
-    document.getElementById("projectStat").textContent =
-    document.getElementById("title").value || "UNTITLED";
-
-    document.getElementById("sceneCount").textContent =
-    scenes;
-
-    document.getElementById("characterCount").textContent =
-    Object.keys(characterStats).length;
-
-    document.getElementById("dialogueCount").textContent =
-    Object.values(characterStats)
-    .reduce((a,b)=>a+b,0);
-
-    document.getElementById("pageCount").textContent =
-    Math.max(1,Math.ceil(words/250));
-
-    document.getElementById("wordCount").textContent =
-    words;
-}
-
-// CHARACTER REPORT
-
-function updateCharacterReport(){
-
-    const report =
-    document.getElementById("characterReportList");
-
-    report.innerHTML = "";
-
-    Object.entries(characterStats)
-    .forEach(([name,count])=>{
-
-        report.innerHTML += `
-        <div>
-        ${name} - ${count} Dialogues
-        </div>
-        `;
-    });
-}
-
-// SHOT LIST
-
-function generateShotList(){
-
-    let output = "";
-
-    shotListData.forEach(item=>{
-
-        output += `
-SCENE ${item.scene}
-
-${item.heading}
-
-SHOT TYPE : ${item.shot}
-
-MOVEMENT : ${item.movement}
-
--------------------------
-
+NEXT SCENE :
+${document.getElementById("nextscene").value}
 `;
-    });
 
-    document.getElementById("shotListOutput")
-    .textContent = output;
+document.getElementById("output").textContent = script;
+
 }
 
-// DOWNLOAD SHOT LIST
+function downloadScript(){
 
-function downloadShotList(){
+let text = document.getElementById("output").textContent;
 
-    const content =
-    document.getElementById("shotListOutput")
-    .textContent;
-
-    const blob =
-    new Blob([content],{
-        type:"text/plain"
-    });
-
-    const a =
-    document.createElement("a");
-
-    a.href =
-    URL.createObjectURL(blob);
-
-    a.download =
-    "Shot_List.txt";
-
-    a.click();
+if(text.trim() === ""){
+alert("Please Generate Script First");
+return;
 }
 
-// PDF
+let blob = new Blob([text], {type:"text/plain"});
 
-function downloadPDF(){
+let a = document.createElement("a");
 
-    html2pdf()
-    .from(document.getElementById("scriptPage"))
-    .save("TSW_PRO_Screenplay.pdf");
+a.href = URL.createObjectURL(blob);
+
+a.download = "Telugu_Movie_Script.txt";
+
+a.click();
+
 }
 
-// PRINT
+function clearForm(){
+
+document.querySelectorAll("input, textarea").forEach(field=>{
+field.value="";
+});
+
+document.getElementById("output").textContent="";
+
+}
 
 function printScript(){
-    window.print();
-}
 
-// SAVE PROJECT
+let content = document.getElementById("output").innerText;
 
-function saveProject(){
+let win = window.open("", "", "width=800,height=900");
 
-    const data = {
-        screenplay:
-        document.getElementById("scriptContent").innerHTML
-    };
+win.document.write("<pre>"+content+"</pre>");
 
-    localStorage.setItem(
-        "tsw_project",
-        JSON.stringify(data)
-    );
+win.print();
 
-    alert("Project Saved");
-}
+win.close();
 
-// OPEN PROJECT
-
-function openProject(){
-
-    const data =
-    localStorage.getItem("tsw_project");
-
-    if(data){
-
-        document.getElementById("scriptContent")
-        .innerHTML =
-        JSON.parse(data).screenplay;
-    }
-}
-
-// RESET
-
-function resetScript(){
-
-    if(confirm("Reset Script?")){
-
-        document.getElementById("scriptContent")
-        .innerHTML = "";
-
-        characterStats = {};
-        shotListData = [];
-
-        updateCharacterReport();
-        updateStatistics();
-    }
-}function generateAIScene(){
-
-    let location =
-    document.getElementById("aiLocation").value;
-
-    let characters =
-    document.getElementById("aiCharacters").value;
-
-    let emotion =
-    document.getElementById("aiEmotion").value;
-
-    let output = `
-EXT. ${location.toUpperCase()} - NIGHT
-
-${characters.split(",")[0]} ${emotion} ga
-parigeduthu vastundi.
-
-${characters.split(",")[0].toUpperCase()}
-
-Amma ekkada unnava?
-
-${characters.split(",")[1]?.trim().toUpperCase() || "MOTHER"}
-
-Kitchen lo unna ra.
-`;
-
-    document.getElementById("action").value = output;
 }
