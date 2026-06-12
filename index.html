@@ -1,263 +1,121 @@
 <!DOCTYPE html>
-
-
-<textarea
-id="nextscene"
-rows="5"
-placeholder="Describe the next scene...">
-</textarea>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>TSW PRO - Telugu Script Writer Pro</title>
+    <meta name="google-site-verification" content="6nZjkgo56s9T6o04k0CSa1qVCxhG3HIcg7BDe9kgxVI" />
 
-<style>
-body{
-    background:#111;
-    color:white;
-    font-family:Arial,sans-serif;
-    margin:0;
-    padding:20px;
-}
+    <title>TSW PRO - Telugu Script Writer Pro</title>
 
-.container{
-    max-width:1200px;
-    margin:auto;
-}
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, sans-serif;
+        }
 
-h1{
-    text-align:center;
-}
+        body{
+            background:#111;
+            color:white;
+            min-height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+        }
 
-input, textarea, select{
-    width:100%;
-    padding:10px;
-    margin:5px 0 15px;
-    border-radius:6px;
-    border:none;
-}
+        .container{
+            width:90%;
+            max-width:1000px;
+            background:#1b1b1b;
+            padding:30px;
+            border-radius:15px;
+        }
 
-textarea{
-    height:100px;
-}
+        h1{
+            text-align:center;
+            margin-bottom:20px;
+        }
 
-button{
-    background:#00aaff;
-    color:white;
-    border:none;
-    padding:12px 20px;
-    border-radius:6px;
-    cursor:pointer;
-}
+        textarea{
+            width:100%;
+            height:500px;
+            padding:15px;
+            font-size:16px;
+            border:none;
+            border-radius:10px;
+            resize:vertical;
+        }
 
-#output{
-    margin-top:20px;
-    background:white;
-    color:black;
-    padding:20px;
-    white-space:pre-wrap;
-    border-radius:10px;
-}
-</style>
+        .btn{
+            margin-top:15px;
+            padding:12px 20px;
+            background:#00aaff;
+            color:white;
+            border:none;
+            border-radius:8px;
+            cursor:pointer;
+            font-size:16px;
+        }
 
+        .btn:hover{
+            opacity:0.9;
+        }
+    </style>
 </head>
 
 <body>
 
 <div class="container">
 
-<h1>🎬 TSW PRO - Telugu Script Writer Pro</h1>
+    <h1>TSW PRO - Telugu Script Writer Pro</h1>
 
-<h2>Project Details</h2>
+    <textarea id="scriptBox">
+SEQUENCE NO:
+SCENE NO:
 
-<input id="title" placeholder="TITLE">
-<input id="writtenby" placeholder="WRITTEN BY">
-<input id="author" placeholder="AUTHOR">
-<input id="phone" placeholder="PHONE">
-<input id="email" placeholder="EMAIL">
+INT / EXT :
+DAY / NIGHT :
+TIME :
+LOCATION :
 
-<h2>Scene Details</h2>
+CHARACTERS :
+EMOTION / MOOD :
 
-<input id="fadein" placeholder="FADE IN">
+SCENE HEADING :
+ACTION DESCRIPTION :
 
-<input id="sequence" placeholder="SEQUENCE NO">
-<input id="scene" placeholder="SCENE NO">
+DIALOGUE :
 
-<select id="intext">
-<option>INT.</option>
-<option>EXT.</option>
-</select>
+CAMERA (Optional) :
+SHOT TYPE :
+MOVEMENT :
 
-<select id="daynight">
-<option>DAY</option>
-<option>NIGHT</option>
-</select>
+SFX :
+BGM :
 
-<input id="time" placeholder="TIME">
-<input id="location" placeholder="LOCATION">
-<input id="characters" placeholder="CHARACTERS">
-<input id="emotion" placeholder="EMOTION / MOOD">
+TRANSITION :
 
-<textarea id="sceneheading" placeholder="SCENE HEADING"></textarea>
+NEXT SCENE :
+    </textarea>
 
-<textarea id="action" placeholder="ACTION DESCRIPTION"></textarea>
-
-<input id="charactername" placeholder="CHARACTER NAME">
-
-<textarea id="dialogue" placeholder="DIALOGUE"></textarea>
-
-<input id="camera" placeholder="CAMERA">
-<input id="shottype" placeholder="SHOT TYPE">
-<input id="movement" placeholder="MOVEMENT">
-
-<input id="sfx" placeholder="SFX">
-<input id="bgm" placeholder="BGM">
-
-<input id="transition" placeholder="TRANSITION">
-<input id="cutto" placeholder="CUT TO">
-<input id="dissolve" placeholder="DISSOLVE TO">
-<input id="fadeout" placeholder="FADE OUT">
-
-<input id="nextscene" placeholder="NEXT SCENE">
-
-<button onclick="generateScript()">
-GENERATE SCRIPT
-</button>
-
-<button onclick="downloadScript()">
-DOWNLOAD SCRIPT
-</button>
-
-<div id="output"></div>
+    <button class="btn" onclick="saveScript()">Save Script</button>
 
 </div>
 
 <script>
+function saveScript() {
+    const text = document.getElementById("scriptBox").value;
 
-function generateScript(){
+    const blob = new Blob([text], {type:"text/plain"});
+    const a = document.createElement("a");
 
-let script =
+    a.href = URL.createObjectURL(blob);
+    a.download = "Telugu_Movie_Script.txt";
 
-`TITLE :
-${title.value}
-
-WRITTEN BY :
-${writtenby.value}
-
-AUTHOR :
-${author.value}
-
-PHONE :
-${phone.value}
-
-EMAIL :
-${email.value}
-
---------------------------------------------------
-
-FADE IN:
-${fadein.value}
-
-SEQUENCE NO :
-${sequence.value}
-
-SCENE NO :
-${scene.value}
-
-INT. / EXT. :
-${intext.value}
-
-DAY / NIGHT :
-${daynight.value}
-
-TIME :
-${time.value}
-
-LOCATION :
-${location.value}
-
-CHARACTERS :
-${characters.value}
-
-EMOTION / MOOD :
-${emotion.value}
-
---------------------------------------------------
-
-SCENE HEADING :
-${sceneheading.value}
-
-ACTION DESCRIPTION :
-${action.value}
-
---------------------------------------------------
-
-CHARACTER NAME :
-${charactername.value}
-
-DIALOGUE :
-${dialogue.value}
-
---------------------------------------------------
-
-CAMERA :
-${camera.value}
-
-SHOT TYPE :
-${shottype.value}
-
-MOVEMENT :
-${movement.value}
-
---------------------------------------------------
-
-SFX :
-${sfx.value}
-
-BGM :
-${bgm.value}
-
---------------------------------------------------
-
-TRANSITION :
-${transition.value}
-
-CUT TO :
-${cutto.value}
-
-DISSOLVE TO :
-${dissolve.value}
-
-FADE OUT :
-${fadeout.value}
-
---------------------------------------------------
-
-NEXT SCENE :
-${nextscene.value}`;
-
-document.getElementById("output").textContent = script;
-
+    a.click();
 }
-
-function downloadScript(){
-
-let text = document.getElementById("output").textContent;
-
-let blob = new Blob([text], {type:"text/plain"});
-
-let a = document.createElement("a");
-
-a.href = URL.createObjectURL(blob);
-
-a.download = "Telugu_Movie_Script.txt";
-
-a.click();
-
-}
-
 </script>
 
 </body>
