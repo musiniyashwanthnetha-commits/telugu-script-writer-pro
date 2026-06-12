@@ -1,154 +1,58 @@
-<img src="logo.png" width="120" alt="TSW PRO Logo"><!DOCTYPE html>
-<a href="index.html">Home</a>
-<a href="about.html">About</a>
-<a href="contact.html">Contact</a>
+<!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<a href="index.html">Home</a>
-<a href="about.html">About</a>
-<a href="contact.html">Contact</a>
-<meta name="google-site-verification" content="6nZjkgo56s9T6o04k0CSa1qVCxhG3HIcg7BDe9kgxVI">
-<!DOCTYPE html>
-<html>
-<head>
-<title>Contact TSW PRO</title>
-</head>
-<body>
-<!DOCTYPE html>
-<html>
-<head>
-<title>About TSW PRO</title>
-</head>
-<body>
-
-<h1>About TSW PRO</h1>
-
-<p>
-TSW PRO is a Telugu screenplay writing platform.
-</p>
-
-<a href="./index.html">🏠 Home</a>
-
-</body>
-</html>
-<h1>Contact Us</h1>
-
-<p>Email: yourmail@gmail.com</p>
-
-<a href="index.html">Back to Home</a>
-
-</body>
-</html>
-<meta name="description" content="TSW PRO Telugu Script Writer. Free Telugu movie screenplay and cinematic script writing software online.">
-<meta name="keywords" content="Telugu Script Writer, Telugu Screenplay, Movie Script Writing, Telugu Cinema Script">
-<meta name="author" content="TSW PRO">
 
 <title>TSW PRO - Telugu Script Writer Pro</title>
 
 <style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
-}
-
 body{
-background:#111;
-color:white;
-line-height:1.6;
-}
-
-header{
-background:#000;
-padding:20px;
-text-align:center;
-}
-
-.logo{
-font-size:40px;
-font-weight:bold;
-}
-
-.tagline{
-color:#ccc;
-margin-top:10px;
-}
-
-nav{
-margin-top:15px;
-}
-
-nav a{
-color:white;
-text-decoration:none;
-margin:0 15px;
-font-weight:bold;
+    background:#111;
+    color:white;
+    font-family:Arial,sans-serif;
+    margin:0;
+    padding:20px;
 }
 
 .container{
-width:90%;
-max-width:1200px;
-margin:auto;
-padding:20px;
+    max-width:1200px;
+    margin:auto;
 }
 
-.section{
-background:#1b1b1b;
-padding:20px;
-border-radius:10px;
-margin-bottom:20px;
+h1{
+    text-align:center;
 }
 
-h2{
-color:#00c3ff;
-margin-bottom:15px;
-}
-
-input,
-select,
-textarea{
-width:100%;
-padding:12px;
-margin-bottom:10px;
-border:none;
-border-radius:6px;
+input, textarea, select{
+    width:100%;
+    padding:10px;
+    margin:5px 0 15px;
+    border-radius:6px;
+    border:none;
 }
 
 textarea{
-height:120px;
+    height:100px;
 }
 
 button{
-background:#00aaff;
-color:white;
-border:none;
-padding:12px 20px;
-border-radius:6px;
-cursor:pointer;
-margin:5px;
-}
-
-button:hover{
-opacity:0.9;
+    background:#00aaff;
+    color:white;
+    border:none;
+    padding:12px 20px;
+    border-radius:6px;
+    cursor:pointer;
 }
 
 #output{
-background:white;
-color:black;
-padding:20px;
-border-radius:10px;
-min-height:300px;
-white-space:pre-wrap;
-}
-
-footer{
-background:#000;
-text-align:center;
-padding:20px;
-margin-top:30px;
+    margin-top:20px;
+    background:white;
+    color:black;
+    padding:20px;
+    white-space:pre-wrap;
+    border-radius:10px;
 }
 </style>
 
@@ -156,39 +60,24 @@ margin-top:30px;
 
 <body>
 
-<header>
-
-<div class="logo">🎬 TSW PRO</div>
-
-<div class="tagline">
-Professional Telugu Script Writing Software
-</div>
-
-<nav>
-<a href="#home">Home</a>
-<a href="#about">About</a>
-<a href="#contact">Contact</a>
-</nav>
-
-</header>
-
 <div class="container">
 
-<div class="section">
+<h1>🎬 TSW PRO - Telugu Script Writer Pro</h1>
 
 <h2>Project Details</h2>
 
-<input type="text" id="title" placeholder="Movie Title">
-<input type="text" id="writer" placeholder="Writer Name">
-
-</div>
-
-<div class="section">
+<input id="title" placeholder="TITLE">
+<input id="writtenby" placeholder="WRITTEN BY">
+<input id="author" placeholder="AUTHOR">
+<input id="phone" placeholder="PHONE">
+<input id="email" placeholder="EMAIL">
 
 <h2>Scene Details</h2>
 
-<input type="number" id="sequence" placeholder="Sequence Number">
-<input type="number" id="scene" placeholder="Scene Number">
+<input id="fadein" placeholder="FADE IN">
+
+<input id="sequence" placeholder="SEQUENCE NO">
+<input id="scene" placeholder="SCENE NO">
 
 <select id="intext">
 <option>INT.</option>
@@ -198,81 +87,153 @@ Professional Telugu Script Writing Software
 <select id="daynight">
 <option>DAY</option>
 <option>NIGHT</option>
-<option>EVENING</option>
-<option>MORNING</option>
 </select>
 
-<input type="text" id="location" placeholder="Location">
-<input type="text" id="characters" placeholder="Characters">
-<input type="text" id="emotion" placeholder="Emotion">
+<input id="time" placeholder="TIME">
+<input id="location" placeholder="LOCATION">
+<input id="characters" placeholder="CHARACTERS">
+<input id="emotion" placeholder="EMOTION / MOOD">
 
-<textarea id="action" placeholder="Action Description"></textarea>
+<textarea id="sceneheading" placeholder="SCENE HEADING"></textarea>
 
-<textarea id="dialogue" placeholder="Dialogue"></textarea>
+<textarea id="action" placeholder="ACTION DESCRIPTION"></textarea>
 
-<input type="text" id="camera" placeholder="Camera">
-<input type="text" id="shot" placeholder="Shot Type">
-<input type="text" id="bgm" placeholder="BGM">
-<input type="text" id="transition" placeholder="Transition">
+<input id="charactername" placeholder="CHARACTER NAME">
 
-<button onclick="generateScript()">Generate Script</button> <button onclick="downloadScript()">Download Script</button>
+<textarea id="dialogue" placeholder="DIALOGUE"></textarea>
 
-</div>
+<input id="camera" placeholder="CAMERA">
+<input id="shottype" placeholder="SHOT TYPE">
+<input id="movement" placeholder="MOVEMENT">
 
-<div class="section">
+<input id="sfx" placeholder="SFX">
+<input id="bgm" placeholder="BGM">
 
-<h2>Generated Script</h2>
+<input id="transition" placeholder="TRANSITION">
+<input id="cutto" placeholder="CUT TO">
+<input id="dissolve" placeholder="DISSOLVE TO">
+<input id="fadeout" placeholder="FADE OUT">
+
+<input id="nextscene" placeholder="NEXT SCENE">
+
+<button onclick="generateScript()">
+GENERATE SCRIPT
+</button>
+
+<button onclick="downloadScript()">
+DOWNLOAD SCRIPT
+</button>
 
 <div id="output"></div>
 
 </div>
 
-<div class="section" id="about">
-
-<h2>About TSW PRO</h2>
-
-<p>
-TSW PRO helps Telugu writers create professional movie scripts,
-screenplays, dialogues and cinematic scene formats.
-</p>
-
-</div>
-
-<div class="section" id="contact">
-
-<h2>Contact Us</h2>
-
-<p>Email: yourmail@gmail.com</p>
-
-</div>
-
-</div>
-
-<footer>
-© 2026 TSW PRO - Telugu Script Writer Pro
-</footer>
-
 <script>
+
 function generateScript(){
 
 let script =
-"TITLE: " + document.getElementById("title").value + "\n\n" +
-"WRITER: " + document.getElementById("writer").value + "\n\n" +
-"SEQUENCE NO: " + document.getElementById("sequence").value + "\n" +
-"SCENE NO: " + document.getElementById("scene").value + "\n\n" +
-document.getElementById("intext").value + " - " +
-document.getElementById("daynight").value + "\n\n" +
-"LOCATION: " + document.getElementById("location").value + "\n\n" +
-"CHARACTERS: " + document.getElementById("characters").value + "\n\n" +
-"EMOTION: " + document.getElementById("emotion").value + "\n\n" +
-"ACTION:\n" + document.getElementById("action").value + "\n\n" +
-"DIALOGUE:\n" + document.getElementById("dialogue").value + "\n\n" +
-"CAMERA: " + document.getElementById("camera").value + "\n" +
-"SHOT TYPE: " + document.getElementById("shot").value + "\n" +
-"BGM: " + document.getElementById("bgm").value + "\n" +
-"TRANSITION: " + document.getElementById("transition").value;
+
+`TITLE :
+${title.value}
+
+WRITTEN BY :
+${writtenby.value}
+
+AUTHOR :
+${author.value}
+
+PHONE :
+${phone.value}
+
+EMAIL :
+${email.value}
+
+--------------------------------------------------
+
+FADE IN:
+${fadein.value}
+
+SEQUENCE NO :
+${sequence.value}
+
+SCENE NO :
+${scene.value}
+
+INT. / EXT. :
+${intext.value}
+
+DAY / NIGHT :
+${daynight.value}
+
+TIME :
+${time.value}
+
+LOCATION :
+${location.value}
+
+CHARACTERS :
+${characters.value}
+
+EMOTION / MOOD :
+${emotion.value}
+
+--------------------------------------------------
+
+SCENE HEADING :
+${sceneheading.value}
+
+ACTION DESCRIPTION :
+${action.value}
+
+--------------------------------------------------
+
+CHARACTER NAME :
+${charactername.value}
+
+DIALOGUE :
+${dialogue.value}
+
+--------------------------------------------------
+
+CAMERA :
+${camera.value}
+
+SHOT TYPE :
+${shottype.value}
+
+MOVEMENT :
+${movement.value}
+
+--------------------------------------------------
+
+SFX :
+${sfx.value}
+
+BGM :
+${bgm.value}
+
+--------------------------------------------------
+
+TRANSITION :
+${transition.value}
+
+CUT TO :
+${cutto.value}
+
+DISSOLVE TO :
+${dissolve.value}
+
+FADE OUT :
+${fadeout.value}
+
+--------------------------------------------------
+
+NEXT SCENE :
+${nextscene.value}`;
 
 document.getElementById("output").textContent = script;
+
 }
 
 function downloadScript(){
@@ -285,10 +246,12 @@ let a = document.createElement("a");
 
 a.href = URL.createObjectURL(blob);
 
-a.download = "Telugu_Script.txt";
+a.download = "Telugu_Movie_Script.txt";
 
 a.click();
+
 }
+
 </script>
 
 </body>
